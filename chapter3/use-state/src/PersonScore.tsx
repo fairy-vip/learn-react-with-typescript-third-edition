@@ -10,7 +10,7 @@ export function PersonScore() {
     getPerson().then((person) => {
       setLoading(false);
       setName(person.name);
-      console.log('State values', loading, name);
+      //console.log('State values', loading, name);
     });
   }, []);
 

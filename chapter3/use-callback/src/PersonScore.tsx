@@ -59,7 +59,8 @@ export function PersonScore() {
     }
   }, [loading]);
 
-  const handleReset = useCallback(() => dispatch({ type: 'reset' }), []);
+  const handleReset = () => dispatch({ type: 'reset' });
+  const handleResetMemoized = useCallback(handleReset, []);
 
   if (loading) {
     return <div>Loading ...</div>;
@@ -74,7 +75,7 @@ export function PersonScore() {
         Add
       </button>
       <button onClick={() => dispatch({ type: 'decrement' })}>Subtract</button>
-      <Reset onClick={handleReset} />
+      <Reset onClick={handleResetMemoized} />
     </div>
   );
 }
