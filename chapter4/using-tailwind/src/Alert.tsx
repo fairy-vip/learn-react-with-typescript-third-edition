@@ -21,7 +21,7 @@ export function Alert({ type = 'information', heading, children, closable, onClo
   }
   return (
     <div
-      className={`border-1 inline-flex flex-col rounded-md border-transparent p-3 text-left ${
+      className={`inline-flex flex-col rounded-md border-1 border-transparent p-3 text-left ${
         type === 'warning' ? 'text-amber-900' : 'text-teal-900'
       } ${type === 'warning' ? 'bg-amber-50' : 'bg-teal-50'} `}
     >
