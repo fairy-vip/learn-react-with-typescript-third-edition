@@ -1,4 +1,5 @@
 import { posts } from '@/data/posts';
+import { notFound } from 'next/navigation';
 
 export default async function Post({
   params,
@@ -7,11 +8,11 @@ export default async function Post({
 }) {
   const id = Number((await params).id);
   if (!Number.isInteger(id)) {
-    return <main>Post not found</main>;
+    notFound();
   }
   const post = posts.find((post) => post.id === Number(id));
   if (!post) {
-    return <main>Post not found</main>;
+    notFound();
   }
 
   return (
