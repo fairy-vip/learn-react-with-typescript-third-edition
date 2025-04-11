@@ -12,7 +12,6 @@ export async function createPost(
 ) {
   let client: Client | undefined;
   let result: ResultSet | undefined;
-  let ok = true;
   try {
     const client = createClient({
       url: process.env.DB_URL ?? '',
@@ -22,14 +21,15 @@ export async function createPost(
       args: [title, description],
     });
   } catch {
-    ok = false;
+    return { ok: false };
+  } finally {
+    if (client) {
+      client.close();
+    }
   }
-  if (client) {
-    client.close();
-  }
-  revalidatePath('/');
+  revalidatePath('/posts');
   return {
-    ok,
+    ok: true,
     id: result ? result.lastInsertRowid : undefined,
   };
 }
