@@ -24,6 +24,7 @@ export function Header() {
           type="search"
           name="criteria"
           placeholder="Search"
+          aria-label="Search blog posts"
         />
       </Form>
     </header>
