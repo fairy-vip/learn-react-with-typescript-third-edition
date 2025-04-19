@@ -42,7 +42,10 @@ export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   function onSubmit() {
     startTransition(() => {
-      formAction(new FormData(formRef.current!));
+      if (!formRef.current) {
+        return;
+      }
+      formAction(new FormData(formRef.current));
     });
   }
   return (
