@@ -72,12 +72,11 @@ export function ContactForm() {
           {...register('name')}
           aria-required="true"
         />
-        {(clientErrors.name ?? errors.name) && (
-          <div id="name-error" role="alert">
-            {clientErrors.name?.message ??
-              errors.name?.message}
-          </div>
-        )}
+        <FieldError
+          clientError={clientErrors.name}
+          serverError={errors.name}
+          errorId="name-error"
+        />
       </div>
       <div className="field">
         <label htmlFor="email">
@@ -99,12 +98,11 @@ export function ContactForm() {
           {...register('email')}
           aria-required="true"
         />
-        {(clientErrors.email ?? errors.email) && (
-          <div id="email-error" role="alert">
-            {clientErrors.email?.message ??
-              errors.email?.message}
-          </div>
-        )}
+        <FieldError
+          clientError={clientErrors.email}
+          serverError={errors.email}
+          errorId="email-error"
+        />
       </div>
       <div className="field">
         <label htmlFor="reason">
@@ -132,13 +130,11 @@ export function ContactForm() {
           </option>
           <option value="Other">Other</option>
         </select>
-        {(clientErrors.reason ??
-          errors.reason) && (
-          <div id="reason-error" role="alert">
-            {clientErrors.reason?.message ??
-              errors.reason?.message}
-          </div>
-        )}
+        <FieldError
+          clientError={clientErrors.reason}
+          serverError={errors.reason}
+          errorId="reason-error"
+        />
       </div>
       <div className="field">
         <label htmlFor="notes">
@@ -165,5 +161,28 @@ export function ContactForm() {
         Submit
       </button>
     </form>
+  );
+}
+type Err =
+  | { message?: string }
+  | undefined
+  | null;
+function FieldError({
+  clientError,
+  serverError,
+  errorId,
+}: {
+  clientError: Err;
+  serverError: Err;
+  errorId: string;
+}) {
+  const error = clientError ?? serverError;
+  if (!error) {
+    return null;
+  }
+  return (
+    <div id={errorId} role="alert">
+      {error.message}
+    </div>
   );
 }

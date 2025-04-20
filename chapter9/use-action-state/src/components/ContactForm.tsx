@@ -34,11 +34,10 @@ export function ContactForm() {
           }
           aria-describedby="name-error"
         />
-        {errors.name && (
-          <div id="name-error" role="alert">
-            {errors.name.message}
-          </div>
-        )}
+        <FieldError
+          serverError={errors.name}
+          errorId="name-error"
+        />
       </div>
       <div className="field">
         <label htmlFor="email">
@@ -57,11 +56,10 @@ export function ContactForm() {
           }
           aria-describedby="email-error"
         />
-        {errors.email && (
-          <div id="email-error" role="alert">
-            {errors.email.message}
-          </div>
-        )}
+        <FieldError
+          serverError={errors.email}
+          errorId="email-error"
+        />
       </div>
       <div className="field">
         <label htmlFor="reason">
@@ -86,11 +84,10 @@ export function ContactForm() {
           </option>
           <option value="Other">Other</option>
         </select>
-        {errors.reason && (
-          <div id="reason-error" role="alert">
-            {errors.reason.message}
-          </div>
-        )}
+        <FieldError
+          serverError={errors.reason}
+          errorId="reason-error"
+        />
       </div>
       <div className="field">
         <label htmlFor="notes">
@@ -117,5 +114,22 @@ export function ContactForm() {
         Submit
       </button>
     </form>
+  );
+}
+type Err = { message?: string } | null;
+function FieldError({
+  serverError,
+  errorId,
+}: {
+  serverError: Err;
+  errorId: string;
+}) {
+  if (!serverError) {
+    return null;
+  }
+  return (
+    <div id={errorId} role="alert">
+      {serverError.message}
+    </div>
   );
 }
