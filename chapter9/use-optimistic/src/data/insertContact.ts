@@ -8,11 +8,11 @@ import { redirect } from 'next/navigation';
 import { contactSchema } from './schema';
 import { z } from 'zod';
 
-type FieldError = { message: string };
+type Err = { message: string };
 type FieldErrors = {
-  name: FieldError | null;
-  email: FieldError | null;
-  reason: FieldError | null;
+  name: Err | null;
+  email: Err | null;
+  reason: Err | null;
 };
 type ActionState = {
   ok: boolean;
