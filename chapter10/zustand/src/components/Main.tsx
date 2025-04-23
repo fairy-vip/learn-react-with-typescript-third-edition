@@ -1,8 +1,12 @@
 'use client';
-import { Content } from './Content';
+import { type ReactNode } from 'react';
 import { useUserStore } from '@/state/useUserStore';
 
-export function Main() {
+export function Main({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const userName = useUserStore(
     (state) => state.userName,
   );
@@ -15,7 +19,7 @@ export function Main() {
           ? `Hello ${userName}!`
           : 'Please sign in'}
       </p>
-      <Content />
+      {children}
     </main>
   );
 }
