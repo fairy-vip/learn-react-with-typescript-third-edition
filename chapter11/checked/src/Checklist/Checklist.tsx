@@ -1,5 +1,5 @@
-import { ComponentPropsWithoutRef, useState, type ReactNode } from "react";
-import { IdValue } from "./types";
+import { ComponentPropsWithoutRef, useState, type ReactNode } from 'react';
+import { IdValue } from './types';
 
 type Props<Data> = {
   data: Data[];
@@ -7,7 +7,7 @@ type Props<Data> = {
   primary: keyof Data;
   secondary: keyof Data;
   renderItem?: (item: Data) => ReactNode;
-} & ComponentPropsWithoutRef<"ul">;
+} & ComponentPropsWithoutRef<'ul'>;
 
 export function Checklist<Data>({
   data,
@@ -32,11 +32,11 @@ export function Checklist<Data>({
           return renderItem(item);
         }
         const idValue = item[id] as unknown;
-        if (typeof idValue !== "string" && typeof idValue !== "number") {
+        if (typeof idValue !== 'string' && typeof idValue !== 'number') {
           return null;
         }
         const primaryText = item[primary] as unknown;
-        if (typeof primaryText !== "string") {
+        if (typeof primaryText !== 'string') {
           return null;
         }
         const secondaryText = item[secondary] as unknown;
@@ -50,7 +50,7 @@ export function Checklist<Data>({
               />
               <div>
                 <div className="primary">{primaryText}</div>
-                {typeof secondaryText === "string" && (
+                {typeof secondaryText === 'string' && (
                   <div className="secondary">{secondaryText}</div>
                 )}
               </div>

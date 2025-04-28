@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { IdValue } from "./types";
+import { useState, useEffect } from 'react';
+import { IdValue } from './types';
 
 export function useChecked({
   checkedIds,
@@ -8,9 +8,7 @@ export function useChecked({
   checkedIds?: IdValue[];
   onCheckedIdsChange?: (checkedIds: IdValue[]) => void;
 }) {
-  const [resolvedCheckedIds, setResolvedCheckedIds] = useState<IdValue[]>(
-    checkedIds || []
-  );
+  const [resolvedCheckedIds, setResolvedCheckedIds] = useState<IdValue[]>(checkedIds || []);
   useEffect(() => {
     const isControlled = checkedIds !== undefined;
     if (isControlled) {
@@ -21,9 +19,7 @@ export function useChecked({
   const handleCheckChange = (checkedId: IdValue) => () => {
     const isChecked = resolvedCheckedIds.includes(checkedId);
     const newCheckedIds = isChecked
-      ? resolvedCheckedIds.filter(
-          (itemCheckedid) => itemCheckedid !== checkedId
-        )
+      ? resolvedCheckedIds.filter((itemCheckedid) => itemCheckedid !== checkedId)
       : resolvedCheckedIds.concat(checkedId);
     if (onCheckedIdsChange) {
       onCheckedIdsChange(newCheckedIds);

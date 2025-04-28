@@ -10,20 +10,18 @@ export function Checklist<Data>({ data, id, primary, secondary }: Props<Data>) {
     <ul>
       {data.map((item) => {
         const idValue = item[id] as unknown;
-        if (typeof idValue !== "string" && typeof idValue !== "number") {
+        if (typeof idValue !== 'string' && typeof idValue !== 'number') {
           return null;
         }
         const primaryText = item[primary] as unknown;
-        if (typeof primaryText !== "string") {
+        if (typeof primaryText !== 'string') {
           return null;
         }
         const secondaryText = item[secondary] as unknown;
         return (
           <li key={idValue}>
             <div className="primary">{primaryText}</div>
-            {typeof secondaryText === "string" && (
-              <div className="secondary">{secondaryText}</div>
-            )}
+            {typeof secondaryText === 'string' && <div className="secondary">{secondaryText}</div>}
           </li>
         );
       })}

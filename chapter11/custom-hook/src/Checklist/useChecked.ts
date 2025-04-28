@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { IdValue } from "./types";
+import { useState } from 'react';
+import { IdValue } from './types';
 
 export function useChecked() {
   const [checkedIds, setCheckedIds] = useState<IdValue[]>([]);
