@@ -1,8 +1,8 @@
-import { ComponentPropsWithoutRef, ReactNode } from "react";
-import { useChecked } from "./useChecked";
-import { IdValue } from "./types";
-import { isChecked } from "./isChecked";
-import { assertValueCanBeRendered } from "./assertValueCanBeRendered";
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { useChecked } from './useChecked';
+import { IdValue } from './types';
+import { isChecked } from './isChecked';
+import { assertValueCanBeRendered } from './assertValueCanBeRendered';
 
 type Props<Data> = {
   data: Data[];
@@ -12,7 +12,7 @@ type Props<Data> = {
   renderItem?: (item: Data, isChecked: boolean) => ReactNode;
   checkedIds?: IdValue[];
   onCheckedIdsChange?: (checkedIds: IdValue[]) => void;
-} & ComponentPropsWithoutRef<"ul">;
+} & ComponentPropsWithoutRef<'ul'>;
 
 export function Checklist<Data>({
   data,
@@ -50,7 +50,7 @@ export function Checklist<Data>({
               />
               <div>
                 <div className="primary">{primaryText}</div>
-                {typeof secondaryText === "string" && (
+                {typeof secondaryText === 'string' && (
                   <div className="secondary">{secondaryText}</div>
                 )}
               </div>
