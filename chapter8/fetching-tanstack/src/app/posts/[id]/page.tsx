@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { PostDetail } from '@/components/PostDetail';
 
 export default async function Post({
@@ -7,7 +8,7 @@ export default async function Post({
 }) {
   const id = Number((await params).id);
   if (!Number.isInteger(id)) {
-    return <main>Post not found</main>;
+    notFound();
   }
   return (
     <main>
