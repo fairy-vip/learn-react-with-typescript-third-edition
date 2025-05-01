@@ -14,7 +14,11 @@ export function PostDetail({ id }: { id: number }) {
     queryFn: async () => {
       const response = await fetch(`/api/posts/${id}`);
       if (!response.ok) {
-        throw new Error('Problem fetching data');
+        throw new Error(
+          response.status === 404
+            ? 'Blog post not found'
+            : 'Problem fetching data',
+        );
       }
       return postSchema.parse(await response.json());
     },
