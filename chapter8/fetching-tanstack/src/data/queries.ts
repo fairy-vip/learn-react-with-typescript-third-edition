@@ -4,10 +4,10 @@ import { createClient } from '@libsql/client';
 import { postsSchema, postSchema } from './schema';
 
 export async function getAllPosts() {
-  debugger
-  console.log("--------------------------------")
-  console.log(process.env.DB_URL)
-  console.log("--------------------------------")
+  console.log('--------------------------------');
+  console.log(process.env.DB_URL);
+  console.log(process.env.NODE_ENV)
+  console.log('--------------------------------');
 
   const client = createClient({
     url: process.env.DB_URL ?? '',
@@ -23,6 +23,7 @@ export async function getFilteredPosts(criteria: string) {
   const client = createClient({
     url: process.env.DB_URL ?? '',
   });
+  debugger;
   const data = await client.execute({
     sql: 'SELECT id, title, description FROM posts WHERE title LIKE ?',
     args: [`%${criteria}%`],
