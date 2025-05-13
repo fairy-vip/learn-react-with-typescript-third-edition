@@ -32,6 +32,7 @@ const Header = styled.div`
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.1em;
+
   img {
     width: 22px;
   }

@@ -1,6 +1,6 @@
 import { createClient } from '@libsql/client';
 const client = createClient({
-  url: 'file:src/data/blog.db',
+  url: 'file:blog-20250427.db',
 });
 
 await client.execute(

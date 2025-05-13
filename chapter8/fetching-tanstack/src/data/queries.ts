@@ -4,6 +4,11 @@ import { createClient } from '@libsql/client';
 import { postsSchema, postSchema } from './schema';
 
 export async function getAllPosts() {
+  debugger
+  console.log("--------------------------------")
+  console.log(process.env.DB_URL)
+  console.log("--------------------------------")
+
   const client = createClient({
     url: process.env.DB_URL ?? '',
   });

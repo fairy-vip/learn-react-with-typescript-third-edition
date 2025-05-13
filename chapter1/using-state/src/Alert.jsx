@@ -5,6 +5,11 @@ export function Alert({ type = 'information', heading, children, closable }) {
   if (!visible) {
     return null;
   }
+
+  function handleCloseClick() {
+    setVisible(false);
+  }
+
   return (
     <div>
       <div>
@@ -14,7 +19,7 @@ export function Alert({ type = 'information', heading, children, closable }) {
         <span>{heading}</span>
       </div>
       {closable && (
-        <button aria-label="Close">
+        <button aria-label="Close" onClick={handleCloseClick}>
           <span role="img" aria-label="Close">
             ❌
           </span>

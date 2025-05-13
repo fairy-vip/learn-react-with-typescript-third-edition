@@ -1,4 +1,5 @@
 import { posts } from '@/data/posts';
+import { red } from 'next/dist/lib/picocolors';
 
 export default function Posts() {
   return (
@@ -7,8 +8,10 @@ export default function Posts() {
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
-            <span>{post.title}</span>
-            <p>{post.description}</p>
+            <span style={{ color: 'red' }}>{post.title}</span>
+            <p style={{ borderStyle: 'solid', borderWidth: 1, borderColor: 'red', padding: 5 }}>
+              {post.description}
+            </p>
           </li>
         ))}
       </ul>

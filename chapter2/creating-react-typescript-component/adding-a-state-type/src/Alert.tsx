@@ -14,12 +14,14 @@ export function Alert({ type = 'information', heading, children, closable, onClo
   if (!visible) {
     return null;
   }
+
   function handleCloseClick() {
     setVisible(false);
     if (onClose) {
       onClose();
     }
   }
+
   return (
     <div>
       <div>
@@ -35,7 +37,10 @@ export function Alert({ type = 'information', heading, children, closable, onClo
           </span>
         </button>
       )}
-      <div>{children}</div>
+      <fieldset>
+        <legend>children</legend>
+        {children}
+      </fieldset>
     </div>
   );
 }

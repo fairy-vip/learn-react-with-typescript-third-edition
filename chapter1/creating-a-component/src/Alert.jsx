@@ -1,13 +1,9 @@
 export function Alert() {
   return (
     <div>
-      <div>
-        <span role="img" aria-label="Warning">
-          ⚠️
-        </span>
-        <span>Oh no!</span>
+      <div style={{ color: 'red', width: 300, backgroundColor: 'grey' }}>
+        Hello World！世界你好！！
       </div>
-      <div>Something went wrong</div>
     </div>
   );
 }
